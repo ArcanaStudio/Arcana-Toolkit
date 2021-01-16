@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AssemblyName>ArcanaStudio.Toolkit</AssemblyName>
+    <RootNamespace>ArcanaStudio.Toolkit</RootNamespace>
+    <Authors>Olivier Matis</Authors>
+    <Company>Arcana Studio .NET</Company>
+    <Description>Arcana Studio development toolkit</Description>
+    <Copyright>@ Arcana Studio .NET</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Guruumeditation/Arcana-Toolkit</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Guruumeditation/Arcana-Toolkit</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Toolkit, Arcana Studio</PackageTags>
+  </PropertyGroup>
+
+</Project>
