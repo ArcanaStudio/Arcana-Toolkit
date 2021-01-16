@@ -7,15 +7,15 @@ steps:
     displayName: 'Build solution'
     inputs:
      command: 'build'
-     projects: '**/*Tests.csproj'
+     projects: '**/*Arcana.Toolkit.csproj'
      arguments: '--configuration $(buildConfiguration)'
 
   - task: DotNetCoreCLI@2
     displayName: 'Run tests'
     inputs:
      command: 'test'
-     projects: '**/*Tests.csproj'
-     testRunTitle: 'Arkham Tests'
+     projects: '**/Toolkit.Tests.csproj'
+     testRunTitle: 'Toolkit Tests'
      arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
 
   # Pack NuGet packages.
@@ -26,7 +26,7 @@ steps:
       configuration: 'release'
       versioningScheme: byEnvVar
       versionEnvVar:   ${{ parameters.NugetVersion }}
-      packagesToPack: '**/Arkham.csproj' 
+      packagesToPack: '**/*Arcana.Toolkit.csproj' 
       verbosityPack: Normal
       packDirectory: '$(Build.ArtifactStagingDirectory)/packages'
   
