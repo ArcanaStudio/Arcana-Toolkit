@@ -1,0 +1,40 @@
+parameters:
+  Publish: 'false'
+
+steps:
+   
+  - task: DotNetCoreCLI@2
+    displayName: 'Build solution'
+    inputs:
+     command: 'build'
+     projects: '**/*Arcana.Toolkit.csproj'
+     arguments: '--configuration $(buildConfiguration)'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Run tests'
+    inputs:
+     command: 'test'
+     projects: '**/Toolkit.Tests.csproj'
+     testRunTitle: 'Toolkit Tests'
+     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
+
+  # Pack NuGet packages.
+  - task: DotNetCoreCLI@2
+    displayName: 'Nuget Pack'
+    inputs:
+      command: 'pack'
+      configuration: 'release'
+      versioningScheme: byEnvVar
+      versionEnvVar:   ${{ parameters.NugetVersion }}
+      packagesToPack: '**/*Arcana.Toolkit.csproj' 
+      verbosityPack: Normal
+      packDirectory: '$(Build.ArtifactStagingDirectory)/packages'
+  
+  - ${{ if eq(parameters.Publish, 'true')}}:
+    - task: DotNetCoreCLI@2
+      displayName: dotnet nuget push
+      inputs:
+        command: 'push'
+        packagesToPush: '$(Build.ArtifactStagingDirectory)/packages/*.nupkg'
+        nuGetFeedType: 'internal'
+        publishVstsFeed: 'd6415a94-7ecd-4923-8666-70352b461e0e'
