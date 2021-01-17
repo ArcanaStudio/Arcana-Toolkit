@@ -11,6 +11,3 @@ pool:
 
 steps:
 - template: Base-Steps.yml
-  parameters:
-    Version: $(Version-Master)
-    NugetVersion : NugetVersion-Master

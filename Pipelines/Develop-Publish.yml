@@ -17,6 +17,5 @@ pool:
 steps:
 - template: Base-Steps.yml
   parameters:
-    Version: $(Version-Develop)
-    NugetVersion : NugetVersion-Develop
+    NugetVersionSuffix : '-alpha'
     Publish: 'true'

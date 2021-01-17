@@ -1,13 +1,22 @@
 parameters:
   Publish: 'false'
+  NugetVersionSuffix: ''
 
 steps:
-   
+
+  - task: SonarCloudPrepare@1
+    inputs:
+     SonarCloud: 'Sonarcloud'
+     organization: 'guruumeditation-github'
+     scannerMode: 'MSBuild'
+     projectKey: 'Guruumeditation_Arcana-Toolkit'
+     projectName: 'Arcana-Toolkit'   
+
   - task: DotNetCoreCLI@2
     displayName: 'Build solution'
     inputs:
      command: 'build'
-     projects: '**/*Arcana.Toolkit.csproj'
+     projects: '**/Arcana.Toolkit.csproj'
      arguments: '--configuration $(buildConfiguration)'
 
   - task: DotNetCoreCLI@2
@@ -18,6 +27,20 @@ steps:
      testRunTitle: 'Toolkit Tests'
      arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
 
+  - task: SonarCloudAnalyze@1
+    displayName: 'Run Code Analysis'
+    
+  - task: SonarCloudPublish@1
+    displayName: 'Publish Code Analysis'
+    inputs:
+     pollingTimeoutSec: '300'
+
+  - task: ExtractVersionFromTag@1
+    inputs:
+        projectFolderPath: '$(Build.SourcesDirectory)'
+
+  - bash: echo "##vso[task.setvariable variable=NUGET_VERSION]$(MAJOR).$(MINOR).$(PATCH)${{ parameters.NugetVersionSuffix}}"
+
   # Pack NuGet packages.
   - task: DotNetCoreCLI@2
     displayName: 'Nuget Pack'
@@ -25,8 +48,8 @@ steps:
       command: 'pack'
       configuration: 'release'
       versioningScheme: byEnvVar
-      versionEnvVar:   ${{ parameters.NugetVersion }}
-      packagesToPack: '**/*Arcana.Toolkit.csproj' 
+      versionEnvVar:   NUGET_VERSION
+      packagesToPack: '**/Arcana.Toolkit.csproj' 
       verbosityPack: Normal
       packDirectory: '$(Build.ArtifactStagingDirectory)/packages'
   
@@ -34,7 +57,6 @@ steps:
     - task: DotNetCoreCLI@2
       displayName: dotnet nuget push
       inputs:
-        command: 'push'
-        packagesToPush: '$(Build.ArtifactStagingDirectory)/packages/*.nupkg'
-        nuGetFeedType: 'internal'
-        publishVstsFeed: 'd6415a94-7ecd-4923-8666-70352b461e0e'
+        command: custom
+        custom: nuget
+        arguments: push $(Build.ArtifactStagingDirectory)\packages\*.nupkg  --source https://api.nuget.org/v3/index.json --api-key $(NugetKey) --no-symbols true
