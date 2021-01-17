@@ -39,8 +39,6 @@ steps:
     inputs:
         projectFolderPath: '$(Build.SourcesDirectory)'
 
-  - bash: echo "${{ parameters.NugetVersionSuffix}}"
-
   - bash: echo "##vso[task.setvariable variable=NUGET_VERSION]$(MAJOR).$(MINOR).$(PATCH)${{ parameters.NugetVersionSuffix}}"
 
   # Pack NuGet packages.
