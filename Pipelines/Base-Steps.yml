@@ -3,6 +3,13 @@ parameters:
 
 steps:
 
+  - task: ExtractVersionFromTag@1
+    inputs:
+        projectFolderPath: '$(Build.SourcesDirectory)'
+
+  - bash: echo ${{ parameters.NugetVersion }}
+  - bash: NugetVersion = "$(MAJOR).$(MINOR).$(PATCH)"
+
   - task: SonarCloudPrepare@1
     inputs:
      SonarCloud: 'Sonarcloud'
