@@ -1,6 +1,9 @@
 parameters:
   Publish: 'false'
 
+variables:
+  Test1: '0.1.0'
+
 steps:
 
   - task: SonarCloudPrepare@1
@@ -47,7 +50,7 @@ steps:
       command: 'pack'
       configuration: 'release'
       versioningScheme: byEnvVar
-      versionEnvVar:   'parameters.NugetVersion'
+      versionEnvVar:   Test1
       packagesToPack: '**/Arcana.Toolkit.csproj' 
       verbosityPack: Normal
       packDirectory: '$(Build.ArtifactStagingDirectory)/packages'
