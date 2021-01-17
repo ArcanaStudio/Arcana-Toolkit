@@ -39,6 +39,7 @@ steps:
         projectFolderPath: '$(Build.SourcesDirectory)'
 
   - bash: echo ${{ parameters.NugetVersion }}
+  - bash: NugetVersion = '$(MAJOR).$(MINOR).$(PATCH)'
 
   # Pack NuGet packages.
   - task: DotNetCoreCLI@2
@@ -47,7 +48,7 @@ steps:
       command: 'pack'
       configuration: 'release'
       versioningScheme: byEnvVar
-      versionEnvVar:   'parameters.NugetVersion'
+      versionEnvVar:   NugetVersion
       packagesToPack: '**/Arcana.Toolkit.csproj' 
       verbosityPack: Normal
       packDirectory: '$(Build.ArtifactStagingDirectory)/packages'

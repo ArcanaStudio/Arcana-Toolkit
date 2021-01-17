@@ -12,4 +12,4 @@ pool:
 steps:
 - template: Base-Steps.yml
   parameters:
-    NugetVersion : '$(MAJOR).$(MINOR).$(PATCH)-alpha'
+
