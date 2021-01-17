@@ -47,7 +47,7 @@ steps:
       command: 'pack'
       configuration: 'release'
       versioningScheme: byEnvVar
-      versionEnvVar:   parameters.NugetVersion
+      versionEnvVar:   'parameters.NugetVersion'
       packagesToPack: '**/Arcana.Toolkit.csproj' 
       verbosityPack: Normal
       packDirectory: '$(Build.ArtifactStagingDirectory)/packages'
