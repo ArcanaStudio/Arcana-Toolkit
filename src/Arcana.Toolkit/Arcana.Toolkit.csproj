@@ -13,7 +13,9 @@
     <RepositoryUrl>https://github.com/Guruumeditation/Arcana-Toolkit</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Toolkit, Arcana Studio</PackageTags>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Net.ArcanaStudio.Toolkit</PackageId>
+    <Product>Net.ArcanaStudio.Toolkit</Product>
   </PropertyGroup>
 
 </Project>

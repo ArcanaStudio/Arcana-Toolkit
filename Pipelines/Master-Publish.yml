@@ -17,6 +17,5 @@ pool:
 steps:
 - template: Base-Steps.yml
   parameters:
-    Version: $(Version-Master)
-    NugetVersion : NugetVersion-Master
+    NugetVersion : '1.0.1' #'$(MAJOR).$(MINOR).$(PATCH)'
     Publish: 'true'
