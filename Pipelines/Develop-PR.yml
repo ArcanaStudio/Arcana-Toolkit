@@ -11,5 +11,3 @@ pool:
 
 steps:
 - template: Base-Steps.yml
-  parameters:
-
