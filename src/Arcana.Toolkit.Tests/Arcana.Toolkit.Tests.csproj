@@ -2,6 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <PackageId>Net.ArcanaStudio.Toolkit.Tests</PackageId>
+    <Authors>Olivier Matis</Authors>
+    <Company>Arcana Studio .NET</Company>
+    <Product>Net.ArcanaStudio.Toolkit.Tests</Product>
+    <Description>Arcana Studio development toolkit for unit tests</Description>
+    <Copyright>@ Arcana Studio .NET</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Guruumeditation/Arcana-Toolkit</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Guruumeditation/Arcana-Toolkit</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Toolkit, Arcana Studio, Unit tests</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
