@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Arcana.Toolkit.Tests
+namespace Arcana.Toolkit.Testing.MsTest
 {
     public class FakeHttpMessageHandler<T> : DelegatingHandler
     {

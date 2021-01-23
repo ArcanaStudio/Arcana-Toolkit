@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Arcana.Toolkit.Tests\Arcana.Toolkit.Tests.csproj" />
+    <ProjectReference Include="..\..\Arcana.Toolkit.Tests\Arcana.Toolkit.Testing.MsTest.csproj" />
     <ProjectReference Include="..\..\Arcana.Toolkit\Arcana.Toolkit.csproj" />
   </ItemGroup>
 
