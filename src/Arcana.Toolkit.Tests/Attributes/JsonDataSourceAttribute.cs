@@ -4,7 +4,7 @@ using System.IO;
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Arcana.Toolkit.Tests.Attributes
+namespace Arcana.Toolkit.Testing.MsTest.Attributes
 {
     public class JsonDataSourceAttribute : Attribute, ITestDataSource
     {

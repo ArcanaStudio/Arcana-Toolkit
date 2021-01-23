@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Arcana.Toolkit.Tests
+namespace Arcana.Toolkit.Testing.MsTest
 {
     public class FakeMessage<T>
     {
